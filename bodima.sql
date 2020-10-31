@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2020 at 04:21 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- Generation Time: Oct 30, 2020 at 11:50 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -83,16 +83,16 @@ CREATE TABLE `boardings_owner` (
   `address` varchar(250) NOT NULL,
   `location_link` text NOT NULL,
   `image` text NOT NULL,
-  `account_no` int(11) NOT NULL,
-  `user_accepted` int(1) NOT NULL
+  `account_no` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `boardings_owner`
 --
 
-INSERT INTO `boardings_owner` (`BOid`, `email`, `password`, `token`, `first_name`, `last_name`, `level`, `NIC`, `address`, `location_link`, `image`, `account_no`, `user_accepted`) VALUES
-(1, '2018cs092@stu.ucsc.cmb.ac.lk', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'b6c351c2372493439a8aa6b377555ac4ab2a50d2c6a03fb88a8871c4e36ade089bcb431256df5c6c36ec92eadd77b4cb6c72', 'Amal', 'Lakshan', 'boardings_owner', '', '310/1 ,Delgasduwa, Dodanduwa', '', '', 0, 1);
+INSERT INTO `boardings_owner` (`BOid`, `email`, `password`, `token`, `first_name`, `last_name`, `level`, `NIC`, `address`, `location_link`, `image`, `account_no`) VALUES
+(1, '2018cs092@stu.ucsc.cmb.ac.lk', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'b6c351c2372493439a8aa6b377555ac4ab2a50d2c6a03fb88a8871c4e36ade089bcb431256df5c6c36ec92eadd77b4cb6c72', 'Amal', 'Lakshan', 'boardings_owner', '', '310/1 ,Delgasduwa, Dodanduwa', '', '', 0),
+(2, 'anuki@gmail.com', '23425145', '23424524', 'Anuki', 'De Alwis', 'boardings_owner', '1112223334v', 'Highlevel Road, Makumbura, Kottawa', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -281,19 +281,18 @@ CREATE TABLE `food_supplier` (
   `NIC` varchar(12) NOT NULL,
   `address` varchar(250) NOT NULL,
   `location_link` int(11) NOT NULL,
-  `image` text NOT NULL,
-  `user_accepted` int(1) NOT NULL
+  `image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `food_supplier`
 --
 
-INSERT INTO `food_supplier` (`FSid`, `email`, `password`, `token`, `first_name`, `last_name`, `level`, `NIC`, `address`, `location_link`, `image`, `user_accepted`) VALUES
-(1, 'projectbodima4group12@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'e5d8bae050c5853900781845961896bdf61b4d0be5706ed79cb0e0011b4bc33a8b208918cdb57410f218123695b19841606b', 'nimasha', 'supunpraba', 'food_supplier', '0', '', 0, '', 1),
-(2, 'fs1@gmail.com', '', '', 'Rasika', ' Mallikarachchi', 'food_supplier', '7834848513v', '44/4, old road, Maharagama', 0, '', 0),
-(3, 'fs2@gmail.com', '', '', 'Ajith', 'Hettige', 'food_supplier', '8834342341v', 'No: 5, Mirihana', 0, '', 0),
-(4, 'fs4@gmail.com', '', '', 'Bathiya', 'Gamahe', 'food_supplier', '765432123v', '98/B, dehiwala road, nugegoda', 0, '', 0);
+INSERT INTO `food_supplier` (`FSid`, `email`, `password`, `token`, `first_name`, `last_name`, `level`, `NIC`, `address`, `location_link`, `image`) VALUES
+(1, 'projectbodima4group12@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'e5d8bae050c5853900781845961896bdf61b4d0be5706ed79cb0e0011b4bc33a8b208918cdb57410f218123695b19841606b', 'nimasha', 'supunpraba', 'food_supplier', '0', '', 0, ''),
+(2, 'fs1@gmail.com', '', '', 'Rasika', ' Mallikarachchi', 'food_supplier', '7834848513v', '44/4, old road, Maharagama', 0, ''),
+(3, 'fs2@gmail.com', '', '', 'Ajith', 'Hettige', 'food_supplier', '8834342341v', 'No: 5, Mirihana', 0, ''),
+(4, 'fs4@gmail.com', '', '', 'Bathiya', 'Gamahe', 'food_supplier', '765432123v', '98/B, dehiwala road, nugegoda', 0, '');
 
 -- --------------------------------------------------------
 
@@ -356,7 +355,6 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`marchent_id`, `order_id`, `pay_amount`, `pay_currency`, `status_code`, `md5sig`) VALUES
-(456, 0, 0, '', 0, ''),
 (456, 0, 0, '', 0, '');
 
 -- --------------------------------------------------------
@@ -434,39 +432,66 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`request_id`, `student_email`, `BOid`, `B_post_id`, `message`, `isAccept`, `date`) VALUES
-(66, 'projectbodima4group12@gmail.com', 1, 2, 'I am nimasha.I  like to get the your kotuwa boarding place and would like to request  your boarding ', 1, '2020-10-26'),
-(67, 'projectbodima4group12@gmail.com', 1, 1, 'I am nimasha.I  like to get the your Dalthara boarding place and would like to request  your boardin', 5, '2020-10-26'),
-(69, 'lakshanamal100@gmail.com', 1, 1, 'I am Ishan.I  like to get the your Dalthara boarding place and would like to request  your boarding ', 3, '2020-10-28'),
-(70, 'lakshanamal100@gmail.com', 1, 4, 'I am Ishan.I  like to get the your Maharagama boarding place and would like to request  your boardin', 4, '2020-10-29'),
-(71, 'lakshanamal100@gmail.com', 1, 2, 'I am Ishan.I  like to get the your kotuwa boarding place and would like to request  your boarding ho', 3, '2020-10-29'),
-(72, 'lakshanamal100@gmail.com', 1, 3, 'I am Ishan.I  like to get the your Moratuwa boarding place and would like to request  your boarding ', 1, '2020-10-29');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `student`
---
-
-CREATE TABLE `student` (
-  `Reg_id` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `token` varchar(100) NOT NULL,
-  `level` varchar(50) NOT NULL DEFAULT 'student',
-  `nic` varchar(15) NOT NULL,
-  `address` varchar(250) NOT NULL,
-  `user_accepted` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`Reg_id`, `email`, `first_name`, `last_name`, `password`, `token`, `level`, `nic`, `address`, `user_accepted`) VALUES
-(28, 'lakshanamal100@gmail.com', 'Lakshan', 'Amal', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'e07a3d7cfe211c5f3d7bf716aeb1a413a02227f09a71b064f73e70dfa8026da0f36650c963e14a8357851655cbe33f2cf42c', 'student', '971741546V', '', 1),
-(29, '2018cs030@stu.ucsc.cmb.ac.lk', 'ludo', 'gona', '7c4a8d09ca3762af61e59520943dc26494f8941b', '253ebf85d687a348f527b5cfafa2817273aeab6fa50ca2e1a497fe2cb351b47c91bc6d07e80b614ed69bd09da186fd90320c', 'student', '960900918v', '', 1);
+(1, 'lakshanamal100@gmail.com', 1, 4, 'I am a I like to get the your Maharagama  boarding place for boys. and would like to request an your', 0, '2020-10-13'),
+(2, 'lakshanamal100@gmail.com', 1, 4, 'I am a I like to get the your Maharagama  boarding place for boys. and would like to request an your', 0, '2020-10-13'),
+(3, 'lakshanamal100@gmail.com', 1, 4, 'I am a I like to get the your Maharagama  boarding place for boys. and would like to request an your', 0, '2020-10-13'),
+(4, 'lakshanamal100@gmail.com', 1, 4, 'I am a I like to get the your Maharagama  boarding place for boys. and would like to request an your', 0, '2020-10-13'),
+(5, 'lakshanamal100@gmail.com', 1, 4, 'I am a I like to get the your Maharagama  boarding place for boys. and would like to request an your', 0, '2020-10-13'),
+(6, 'lakshanamal100@gmail.com', 1, 4, 'I am a I like to get the your Maharagama  boarding place for boys. and would like to request an your', 0, '2020-10-13'),
+(7, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-13'),
+(8, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(9, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(10, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(11, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(12, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(13, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(14, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(15, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(16, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(17, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(18, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(19, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(20, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(21, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(22, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(23, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(24, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(25, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(26, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(27, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(28, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(29, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(30, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(31, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(32, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(33, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(34, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(35, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(36, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(37, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(38, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(39, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(40, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(41, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(42, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(43, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(44, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(45, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(46, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(47, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(48, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(49, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(50, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(51, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(52, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(53, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(54, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(55, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(56, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(57, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(58, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(59, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14'),
+(60, 'lakshanamal100@gmail.com', 1, 4, 'I like to get the your Maharagama  boarding place for boys. and would like to request an your boardi', 0, '2020-10-14');
 
 --
 -- Indexes for dumped tables
@@ -496,8 +521,7 @@ ALTER TABLE `boardings_owner`
 -- Indexes for table `boarding_post`
 --
 ALTER TABLE `boarding_post`
-  ADD PRIMARY KEY (`B_post_id`),
-  ADD KEY `BOid` (`BOid`);
+  ADD PRIMARY KEY (`B_post_id`);
 
 --
 -- Indexes for table `complain_boarding`
@@ -590,12 +614,6 @@ ALTER TABLE `request`
   ADD PRIMARY KEY (`request_id`);
 
 --
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`Reg_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -615,7 +633,7 @@ ALTER TABLE `boarder`
 -- AUTO_INCREMENT for table `boardings_owner`
 --
 ALTER TABLE `boardings_owner`
-  MODIFY `BOid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `BOid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `boarding_post`
@@ -633,7 +651,7 @@ ALTER TABLE `food_post`
 -- AUTO_INCREMENT for table `food_request`
 --
 ALTER TABLE `food_request`
-  MODIFY `request_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=308;
+  MODIFY `request_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=309;
 
 --
 -- AUTO_INCREMENT for table `food_supplier`
@@ -651,13 +669,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `request_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
-
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `Reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `request_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- Constraints for dumped tables
